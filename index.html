@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUSH - Incident Submission</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Dashboard - MUSH</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header><h1>Marriott Unified Security Hub (MUSH)</h1></header>
+    <header><h1>Marriott Unified Security Hub</h1></header>
     <nav>
         <a href="index.html">Dashboard</a>
         <a href="incident.html">Incident</a>
@@ -16,27 +16,18 @@
         <a href="login.html">Login</a>
     </nav>
     <main>
-        <h2>Submit an Incident</h2>
-        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-            <label for="title">Incident Title:</label><br>
-            <input type="text" id="title" name="title" required><br><br>
-
-            <label for="system">System Affected:</label><br>
-            <input type="text" id="system" name="system" required><br><br>
-
-            <label for="severity">Severity:</label><br>
-            <select id="severity" name="severity" required>
-                <option value="">--Select--</option>
-                <option value="Low">Low</option>
-                <option value="Medium">Medium</option>
-                <option value="High">High</option>
-            </select><br><br>
-
-            <label for="description">Description:</label><br>
-            <textarea id="description" name="description" rows="5" required></textarea><br><br>
-
-            <button type="submit">Submit Incident</button>
-        </form>
+        <h2>Open Incidents</h2>
+        <table>
+            <tr><th>ID</th><th>Title</th><th>Priority</th><th>Status</th><th>Created</th></tr>
+            <tr><td>1</td><td>Network Outage</td><td>High</td><td>Open</td><td>2025-06-24</td></tr>
+        </table>
+        <h2>System Overview</h2>
+        <ul>
+            <li>Active Systems: 12</li>
+            <li>Online: 10</li>
+            <li>Under Maintenance: 1</li>
+            <li>Offline: 1</li>
+        </ul>
     </main>
 </body>
 </html>

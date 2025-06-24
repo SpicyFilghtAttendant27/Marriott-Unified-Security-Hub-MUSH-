@@ -1,28 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Dashboard - MUSH</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Report Incident - MUSH</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Marriott Unified Security Hub</h1>
+    <header><h1>Incident Reporting</h1></header>
     <nav>
-        <a href="incidents.html">INCIDENTS</a>
-        <a href="systems.html">SYSTEMS</a>
-        <a href="audit_logs.html">AUDIT LOGS</a>
+        <a href="index.html">Dashboard</a>
+        <a href="incident.html">Incident</a>
+        <a href="reports.html">Reports</a>
+        <a href="users.html">User Management</a>
+        <a href="login.html">Login</a>
     </nav>
-    <h2>Open Incidents</h2>
-    <table>
-        <tr><th>Ticket</th><th>Title</th><th>Priority</th><th>Status</th><th>Created</th></tr>
-        <tr><td colspan="5">[Data Rows Placeholder]</td></tr>
-    </table>
-    <h2>System Overview</h2>
-    <ul>
-        <li>Active Systems</li>
-        <li>Online</li>
-        <li>Under Maintenance</li>
-        <li>Offline</li>
-    </ul>
+    <main>
+        <form action="#" method="POST">
+            <label for="title">Title</label><br>
+            <input type="text" id="title" name="title" required><br><br>
+
+            <label for="description">Description</label><br>
+            <textarea id="description" name="description" required></textarea><br><br>
+
+            <label for="system">System</label><br>
+            <input type="text" id="system" name="system" required><br><br>
+
+            <label for="severity">Severity</label><br>
+            <select id="severity" name="severity">
+                <option>Low</option>
+                <option>Medium</option>
+                <option>High</option>
+            </select><br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+    </main>
 </body>
 </html>

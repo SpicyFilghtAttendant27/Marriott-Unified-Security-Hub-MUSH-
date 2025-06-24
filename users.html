@@ -1,53 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUSH - User Management</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #343a40;
-            color: white;
-            padding: 1em;
-            text-align: center;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #495057;
-            padding: 1em;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 1em;
-        }
-        main {
-            padding: 2em;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1em;
-        }
-        th, td {
-            border: 1px solid #ccc;
-            padding: 0.75em;
-            text-align: left;
-        }
-        th {
-            background-color: #e9ecef;
-        }
-        input, button {
-            margin: 0.25em;
-            padding: 0.5em;
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>User Management - MUSH</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header><h1>User Management</h1></header>
@@ -59,58 +16,11 @@
         <a href="login.html">Login</a>
     </nav>
     <main>
-        <h2>Manage Users</h2>
-        <div>
-            <input id="username" placeholder="Username">
-            <input id="role" placeholder="Role">
-            <button onclick="addUser()">Add User</button>
-        </div>
-        <table id="userTable">
-            <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>Role</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
+        <button onclick="alert('Add User Clicked')">+ Add User</button>
+        <table>
+            <tr><th>Name</th><th>Email</th><th>Role</th><th>Actions</th></tr>
+            <tr><td>John Doe</td><td>john@example.com</td><td>Admin</td><td><button>Edit</button> <button>Delete</button></td></tr>
         </table>
     </main>
-
-    <script>
-        const userTable = document.getElementById('userTable').getElementsByTagName('tbody')[0];
-
-        function addUser() {
-            const username = document.getElementById('username').value.trim();
-            const role = document.getElementById('role').value.trim();
-            if (!username || !role) return alert('Please enter both fields');
-
-            const row = userTable.insertRow();
-            row.innerHTML = `
-                <td>${username}</td>
-                <td>${role}</td>
-                <td>
-                    <button onclick="editUser(this)">Edit</button>
-                    <button onclick="deleteUser(this)">Delete</button>
-                </td>`;
-            document.getElementById('username').value = '';
-            document.getElementById('role').value = '';
-        }
-
-        function deleteUser(btn) {
-            const row = btn.parentNode.parentNode;
-            userTable.removeChild(row);
-        }
-
-        function editUser(btn) {
-            const row = btn.parentNode.parentNode;
-            const username = prompt('Edit Username', row.cells[0].innerText);
-            const role = prompt('Edit Role', row.cells[1].innerText);
-            if (username && role) {
-                row.cells[0].innerText = username;
-                row.cells[1].innerText = role;
-            }
-        }
-    </script>
 </body>
 </html>

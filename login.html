@@ -1,54 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MUSH - Login</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      max-width: 400px;
-      margin: auto;
-    }
-    input[type="text"], input[type="password"] {
-      width: 100%;
-      padding: 12px;
-      margin: 8px 0;
-      box-sizing: border-box;
-    }
-    input[type="checkbox"] {
-      margin-right: 8px;
-    }
-    button {
-      width: 100%;
-      padding: 12px;
-      background-color: #000;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #444;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Login - MUSH</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>MARRIOTT UNIFIED SECURITY HUB (MUSH)</h1>
-  <h2>Login</h2>
+    <header><h1>Login Page</h1></header>
+    <nav>
+        <a href="index.html">Dashboard</a>
+        <a href="incident.html">Incident</a>
+        <a href="reports.html">Reports</a>
+        <a href="users.html">User Management</a>
+        <a href="login.html">Login</a>
+    </nav>
+    <main>
+        <form action="index.html" method="POST">
+            <label for="username">Username</label><br>
+            <input type="text" id="username" name="username" placeholder="Enter username" required><br><br>
 
-  <form action="dashboard.html" method="post">
-    <label for="username">Username</label>
-    <input type="text" id="username" name="username" required />
+            <label for="password">Password</label><br>
+            <input type="password" id="password" name="password" placeholder="Enter password" required><br><br>
 
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" required />
+            <input type="checkbox" id="remember" name="remember">
+            <label for="remember">Remember me</label><br><br>
 
-    <label><input type="checkbox" name="remember"> Remember me</label>
-
-    <button type="submit">Log in</button>
-  </form>
-
-  <p><a href="#">Forgot password?</a></p>
+            <button type="submit">Log in</button><br><br>
+            <a href="#">Forgot password?</a>
+        </form>
+    </main>
 </body>
 </html>
