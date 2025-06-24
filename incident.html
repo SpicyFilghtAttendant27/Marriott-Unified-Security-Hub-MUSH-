@@ -17,7 +17,26 @@
     </nav>
     <main>
         <h2>Report an Incident</h2>
-        <img src="incident_form.png" alt="Incident Reporting Form">
+        <form action="https://formspree.io/f/your-form-id" method="POST">
+            <label for="title">Title:</label><br>
+            <input type="text" id="title" name="title" required><br><br>
+
+            <label for="system">System Affected:</label><br>
+            <input type="text" id="system" name="system" required><br><br>
+
+            <label for="severity">Severity:</label><br>
+            <select id="severity" name="severity">
+                <option value="Low">Low</option>
+                <option value="Moderate">Moderate</option>
+                <option value="High">High</option>
+                <option value="Critical">Critical</option>
+            </select><br><br>
+
+            <label for="description">Description:</label><br>
+            <textarea id="description" name="description" rows="5" required></textarea><br><br>
+
+            <button type="submit">Submit Incident</button>
+        </form>
     </main>
 </body>
 </html>
