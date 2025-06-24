@@ -16,8 +16,28 @@
         <a href="login.html">Login</a>
     </nav>
     <main>
-        <h2>Dashboard</h2>
-        <img src="dashboard.png" alt="Dashboard Wireframe">
+        <h2>Submit an Incident</h2>
+        <form action="https://formspree.io/f/your-form-id" method="POST">
+            <label for="title">Incident Title:</label><br>
+            <input type="text" id="title" name="title" required><br><br>
+
+            <label for="system">System Affected:</label><br>
+            <input type="text" id="system" name="system" required><br><br>
+
+            <label for="severity">Severity:</label><br>
+            <select id="severity" name="severity" required>
+                <option value="">--Select--</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select><br><br>
+
+            <label for="description">Description:</label><br>
+            <textarea id="description" name="description" rows="5" required></textarea><br><br>
+
+            <button type="submit">Submit Incident</button>
+        </form>
     </main>
 </body>
 </html>
+
