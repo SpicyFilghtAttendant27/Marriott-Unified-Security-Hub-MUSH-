@@ -1,79 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>MUSH - Login</title>
-    <link rel="stylesheet" href="style.css" />
-    <style>
-        main {
-            text-align: center;
-            padding: 2em;
-        }
-        form {
-            max-width: 400px;
-            margin: 0 auto;
-            background: #f1f1f1;
-            padding: 2em;
-            border-radius: 8px;
-        }
-        input[type="text"], input[type="password"] {
-            width: 90%;
-            padding: 0.7em;
-            margin: 0.5em 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        button {
-            padding: 0.7em 2em;
-            background-color: #343a40;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .error {
-            color: red;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MUSH - Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+    }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      box-sizing: border-box;
+    }
+    input[type="checkbox"] {
+      margin-right: 8px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #444;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Login Page</h1>
-    </header>
-    <nav>
-        <a href="index.html">Dashboard</a>
-        <a href="incident.html">Incident</a>
-        <a href="reports.html">Reports</a>
-        <a href="users.html">User Management</a>
-        <a href="login.html">Login</a>
-    </nav>
-    <main>
-        <h2>Please Log In</h2>
-        <form id="loginForm">
-            <input type="text" id="username" placeholder="Username" required /><br/>
-            <input type="password" id="password" placeholder="Password" required /><br/>
-            <button type="submit">Login</button>
-            <p class="error" id="errorMsg"></p>
-        </form>
-    </main>
+  <h1>MARRIOTT UNIFIED SECURITY HUB (MUSH)</h1>
+  <h2>Login</h2>
 
-    <script>
-        const loginForm = document.getElementById("loginForm");
-        const errorMsg = document.getElementById("errorMsg");
+  <form action="dashboard.html" method="post">
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" required />
 
-        loginForm.addEventListener("submit", function (e) {
-            e.preventDefault();
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required />
 
-            // Basic mock authentication
-            if (username === "admin" && password === "password123") {
-                window.location.href = "index.html"; // redirect to dashboard
-            } else {
-                errorMsg.textContent = "Invalid username or password.";
-            }
-        });
-    </script>
+    <label><input type="checkbox" name="remember"> Remember me</label>
+
+    <button type="submit">Log in</button>
+  </form>
+
+  <p><a href="#">Forgot password?</a></p>
 </body>
 </html>
