@@ -4,133 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dashboard - MUSH</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
-    }
-
-    header {
-      background: #2c3e50;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    nav {
-      background: #34495e;
-      display: flex;
-      justify-content: center;
-      padding: 10px;
-      gap: 20px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    main {
-      display: flex;
-      justify-content: space-between;
-      padding: 20px;
-    }
-
-    .section {
-      width: 48%;
-      background: white;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    h2 {
-      margin-top: 0;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 15px;
-    }
-
-    th, td {
-      border: 1px solid #ddd;
-      padding: 10px;
-      text-align: left;
-    }
-
-    .form-group {
-      margin-bottom: 10px;
-    }
-
-    label {
-      font-weight: bold;
-    }
-
-    input, select, button {
-      padding: 8px;
-      margin-top: 5px;
-      width: 100%;
-      box-sizing: border-box;
-    }
-
-    button {
-      background-color: #3498db;
-      color: white;
-      border: none;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-
-    button:hover {
-      background-color: #2980b9;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>Marriott Unified Security Hub (MUSH)</h1>
+    <h1>Marriott Unified Security Hub</h1>
   </header>
   <nav>
     <a href="index.html">Dashboard</a>
     <a href="incident.html">Incidents</a>
     <a href="reports.html">Reports</a>
-    <a href="users.html">Users</a>
+    <a href="users.html">User Management</a>
     <a href="login.html">Login</a>
   </nav>
-
   <main>
-    <!-- Incidents Section -->
-    <div class="section">
+    <section>
       <h2>Open Incidents</h2>
       <table>
         <tr><th>ID</th><th>Title</th><th>Priority</th><th>Status</th><th>Created</th></tr>
         <tr><td>1</td><td>Network Outage</td><td>High</td><td>Open</td><td>2025-06-24</td></tr>
-        <tr><td>2</td><td>Phishing Email</td><td>Medium</td><td>In Progress</td><td>2025-06-23</td></tr>
+        <tr><td>2</td><td>Phishing Attempt</td><td>Medium</td><td>Investigating</td><td>2025-06-23</td></tr>
+        <tr><td>3</td><td>Unauthorized Access</td><td>High</td><td>Open</td><td>2025-06-22</td></tr>
       </table>
-
-      <form onsubmit="alert('Incident submitted'); return false;">
-        <div class="form-group">
-          <label for="incidentTitle">New Incident Title</label>
-          <input type="text" id="incidentTitle" name="incidentTitle" required>
-        </div>
-        <div class="form-group">
-          <label for="incidentPriority">Priority</label>
-          <select id="incidentPriority" name="incidentPriority">
-            <option>Low</option>
-            <option>Medium</option>
-            <option>High</option>
-          </select>
-        </div>
-        <button type="submit">Add Incident</button>
-      </form>
-    </div>
-
-    <!-- Systems Section -->
-    <div class="section">
+    </section>
+    <section>
       <h2>System Overview</h2>
       <ul>
         <li><strong>Active Systems:</strong> 12</li>
@@ -138,23 +35,7 @@
         <li><strong>Under Maintenance:</strong> 1</li>
         <li><strong>Offline:</strong> 1</li>
       </ul>
-
-      <form onsubmit="alert('System status updated'); return false;">
-        <div class="form-group">
-          <label for="systemName">Add System</label>
-          <input type="text" id="systemName" name="systemName" required>
-        </div>
-        <div class="form-group">
-          <label for="systemStatus">Status</label>
-          <select id="systemStatus" name="systemStatus">
-            <option>Online</option>
-            <option>Under Maintenance</option>
-            <option>Offline</option>
-          </select>
-        </div>
-        <button type="submit">Update System</button>
-      </form>
-    </div>
+    </section>
   </main>
 </body>
 </html>
