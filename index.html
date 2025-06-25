@@ -1,33 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Dashboard - MUSH</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard - MUSH</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff;
+    }
+
+    header {
+      padding: 20px;
+      border-bottom: 2px solid black;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+      border-bottom: 2px solid black;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      border: 1px solid black;
+      padding: 10px 20px;
+      color: black;
+      font-weight: bold;
+    }
+
+    main {
+      display: flex;
+      justify-content: space-between;
+      padding: 40px;
+    }
+
+    .incidents, .systems {
+      width: 48%;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table th, table td {
+      border: 1px solid black;
+      padding: 10px;
+      text-align: left;
+    }
+
+    .systems ul {
+      list-style: none;
+      padding: 0;
+      border: 1px solid black;
+      padding: 20px;
+    }
+
+    .systems ul li {
+      padding: 5px 0;
+    }
+  </style>
 </head>
 <body>
-    <header><h1>Marriott Unified Security Hub</h1></header>
-    <nav>
-        <a href="index.html">Dashboard</a>
-        <a href="incident.html">Incident</a>
-        <a href="reports.html">Reports</a>
-        <a href="users.html">User Management</a>
-        <a href="login.html">Login</a>
-    </nav>
-    <main>
-        <h2>Open Incidents</h2>
-        <table>
-            <tr><th>ID</th><th>Title</th><th>Priority</th><th>Status</th><th>Created</th></tr>
-            <tr><td>1</td><td>Network Outage</td><td>High</td><td>Open</td><td>2025-06-24</td></tr>
-        </table>
-        <h2>System Overview</h2>
-        <ul>
-            <li>Active Systems: 12</li>
-            <li>Online: 10</li>
-            <li>Under Maintenance: 1</li>
-            <li>Offline: 1</li>
-        </ul>
-    </main>
+  <header>
+    <h1>Marriott Unified Security Hub</h1>
+  </header>
+  <nav>
+    <a href="index.html">DASHBOARD</a>
+    <a href="incident.html">INCIDENTS</a>
+    <a href="systems.html">SYSTEMS</a>
+    <a href="audit.html">AUDIT LOGS</a>
+  </nav>
+  <main>
+    <div class="incidents">
+      <h2>Open Incidents</h2>
+      <table>
+        <tr><th>ID</th><th>Title</th><th>Priority</th><th>Status</th><th>Created</th></tr>
+        <tr><td>1</td><td>Network Outage</td><td>High</td><td>Open</td><td>2025-06-24</td></tr>
+        <tr><td>2</td><td>Phishing Attempt</td><td>Medium</td><td>Investigating</td><td>2025-06-23</td></tr>
+        <tr><td>3</td><td>Unauthorized Access</td><td>High</td><td>Open</td><td>2025-06-22</td></tr>
+      </table>
+    </div>
+    <div class="systems">
+      <h2>System Overview</h2>
+      <ul>
+        <li><strong>Active Systems:</strong> 12</li>
+        <li><strong>Online:</strong> 10</li>
+        <li><strong>Under Maintenance:</strong> 1</li>
+        <li><strong>Offline:</strong> 1</li>
+      </ul>
+    </div>
+  </main>
 </body>
 </html>
