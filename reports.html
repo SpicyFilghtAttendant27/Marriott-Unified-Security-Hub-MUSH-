@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Reports - MUSH</title>
+  <title>Login - MUSH</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #fff;
+      background-color: #f8f8f8;
     }
 
     header {
       background-color: #b40000;
       color: white;
-      padding: 20px;
+      padding: 30px;
       text-align: center;
     }
 
@@ -39,52 +39,82 @@
     }
 
     main {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 70vh;
+      flex-direction: column;
+    }
+
+    form {
+      background-color: white;
+      padding: 40px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
     }
 
     h2 {
       text-align: center;
       color: #b40000;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .checkbox-group input {
+      margin-right: 10px;
     }
 
     button {
-      display: block;
-      margin: 0 auto 20px auto;
-      padding: 12px 24px;
+      width: 100%;
+      padding: 12px;
       background-color: #b40000;
       color: white;
-      border: none;
       font-weight: bold;
+      border: none;
       border-radius: 5px;
       cursor: pointer;
+      margin-bottom: 10px;
     }
 
     button:hover {
       background-color: #8b0000;
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-
-    th, td {
-      border: 1px solid #ccc;
-      padding: 12px;
+    .forgot {
       text-align: center;
     }
 
-    th {
-      background-color: #f4f4f4;
+    .forgot a {
+      font-size: 14px;
+      color: #b40000;
+      text-decoration: none;
+    }
+
+    .forgot a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Marriott Unified Security Hub - Reports</h1>
+    <h1>Marriott Unified Security Hub</h1>
   </header>
   <nav>
     <a href="index.html">Dashboard</a>
@@ -94,34 +124,19 @@
     <a href="login.html">Login</a>
   </nav>
   <main>
-    <h2>Generate and View Reports</h2>
-    <button onclick="alert('Report Generated Successfully!')">Generate New Report</button>
-    <table>
-      <tr>
-        <th>Report ID</th>
-        <th>Title</th>
-        <th>Status</th>
-        <th>Date</th>
-      </tr>
-      <tr>
-        <td>001</td>
-        <td>Weekly Threat Summary</td>
-        <td>Complete</td>
-        <td>2025-06-20</td>
-      </tr>
-      <tr>
-        <td>002</td>
-        <td>Unauthorized Access Review</td>
-        <td>Pending</td>
-        <td>2025-06-22</td>
-      </tr>
-      <tr>
-        <td>003</td>
-        <td>Monthly Overview</td>
-        <td>Complete</td>
-        <td>2025-06-01</td>
-      </tr>
-    </table>
+    <form action="index.html" method="POST">
+      <h2>Login</h2>
+      <input type="text" id="username" name="username" placeholder="Username" required />
+      <input type="password" id="password" name="password" placeholder="Password" required />
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="remember" name="remember" />
+        <label for="remember">Remember me</label>
+      </div>
+
+      <button type="submit">Log in</button>
+      <div class="forgot"><a href="#">Forgot password?</a></div>
+    </form>
   </main>
 </body>
 </html>
