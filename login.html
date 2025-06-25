@@ -1,34 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Login - MUSH</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - MUSH</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+    }
+
+    header {
+      padding: 30px 20px 0 20px;
+      text-align: left;
+    }
+
+    header h1 {
+      margin: 5px 0;
+      font-size: 28px;
+    }
+
+    header h2 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: normal;
+    }
+
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 40px;
+    }
+
+    form {
+      width: 100%;
+      max-width: 350px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    h3 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      padding: 12px;
+      font-size: 16px;
+      margin-bottom: 15px;
+      border: 2px solid #000;
+      border-radius: 3px;
+    }
+
+    label {
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .checkbox-group input {
+      margin-right: 10px;
+    }
+
+    button {
+      padding: 12px;
+      font-size: 18px;
+      font-weight: bold;
+      border: 2px solid #000;
+      background-color: white;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    button:hover {
+      background-color: #eee;
+    }
+
+    .forgot {
+      font-size: 14px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-    <header><h1>Login Page</h1></header>
-    <nav>
-        <a href="index.html">Dashboard</a>
-        <a href="incident.html">Incident</a>
-        <a href="reports.html">Reports</a>
-        <a href="users.html">User Management</a>
-        <a href="login.html">Login</a>
-    </nav>
-    <main>
-        <form action="index.html" method="POST">
-            <label for="username">Username</label><br>
-            <input type="text" id="username" name="username" placeholder="Enter username" required><br><br>
+  <header>
+    <img src="#" alt="Logo" style="width:40px; height:40px;" />
+    <h1>MARRIOTT UNIFIED SECURITY HUB</h1>
+    <h2>(MUSH)</h2>
+  </header>
+  <main>
+    <h3>Login</h3>
+    <form action="index.html" method="POST">
+      <input type="text" id="username" name="username" placeholder="Username" required />
+      <input type="password" id="password" name="password" placeholder="Password" required />
 
-            <label for="password">Password</label><br>
-            <input type="password" id="password" name="password" placeholder="Enter password" required><br><br>
+      <div class="checkbox-group">
+        <input type="checkbox" id="remember" name="remember" />
+        <label for="remember">Remember me</label>
+      </div>
 
-            <input type="checkbox" id="remember" name="remember">
-            <label for="remember">Remember me</label><br><br>
-
-            <button type="submit">Log in</button><br><br>
-            <a href="#">Forgot password?</a>
-        </form>
-    </main>
+      <button type="submit">Log in</button>
+      <div class="forgot"><a href="#">Forgot password?</a></div>
+    </form>
+  </main>
 </body>
 </html>
