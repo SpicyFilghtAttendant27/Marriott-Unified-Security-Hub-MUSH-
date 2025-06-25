@@ -8,105 +8,106 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #fff;
+      background: #f9f9f9;
     }
 
     header {
+      background: #2c3e50;
+      color: white;
       padding: 20px;
-      border-bottom: 2px solid black;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 28px;
+      text-align: center;
     }
 
     nav {
+      background: #34495e;
       display: flex;
       justify-content: center;
-      padding: 10px;
-      border-bottom: 2px solid black;
       gap: 20px;
+      padding: 10px;
     }
 
     nav a {
+      color: white;
       text-decoration: none;
-      border: 1px solid black;
-      padding: 10px 20px;
-      color: black;
       font-weight: bold;
     }
 
     main {
-      padding: 40px;
       max-width: 600px;
-      margin: auto;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
     }
 
-    form {
-      border: 1px solid black;
-      padding: 30px;
+    h2 {
+      text-align: center;
+      margin-top: 0;
     }
 
     form label {
       font-weight: bold;
+      margin-top: 10px;
       display: block;
-      margin: 15px 0 5px;
     }
 
-    input[type="text"],
-    textarea,
-    select {
+    input, textarea, select {
       width: 100%;
       padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid black;
+      margin: 8px 0 20px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
       box-sizing: border-box;
     }
 
     button {
-      padding: 10px 20px;
-      border: 1px solid black;
-      background: white;
+      width: 100%;
+      padding: 12px;
+      background-color: #3498db;
+      color: white;
       font-weight: bold;
+      border: none;
       cursor: pointer;
+      border-radius: 3px;
     }
 
     button:hover {
-      background-color: #eee;
+      background-color: #2980b9;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Incident Reporting</h1>
+    <h1>Marriott Unified Security Hub (MUSH)</h1>
   </header>
   <nav>
     <a href="index.html">Dashboard</a>
     <a href="incident.html">Incidents</a>
     <a href="reports.html">Reports</a>
-    <a href="users.html">User Management</a>
+    <a href="users.html">Users</a>
     <a href="login.html">Login</a>
   </nav>
   <main>
-    <form action="#" method="POST">
-      <label for="title">Title</label>
-      <input type="text" id="title" name="title" required>
+    <h2>Report New Incident</h2>
+    <form onsubmit="alert('Incident submitted!'); return false;">
+      <label for="title">Incident Title</label>
+      <input type="text" id="title" name="title" placeholder="e.g. Unauthorized Access" required>
 
       <label for="description">Description</label>
-      <textarea id="description" name="description" rows="4" required></textarea>
+      <textarea id="description" name="description" rows="4" placeholder="Describe what happened..." required></textarea>
 
-      <label for="system">System</label>
-      <input type="text" id="system" name="system" required>
+      <label for="system">Affected System</label>
+      <input type="text" id="system" name="system" placeholder="e.g. Web Server 1" required>
 
       <label for="severity">Severity</label>
       <select id="severity" name="severity">
-        <option>Low</option>
-        <option>Medium</option>
-        <option>High</option>
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
       </select>
 
-      <button type="submit">Submit</button>
+      <button type="submit">Submit Incident</button>
     </form>
   </main>
 </body>
