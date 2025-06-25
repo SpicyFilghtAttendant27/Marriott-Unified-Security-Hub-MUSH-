@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login - MUSH</title>
+  <title>Reports - MUSH</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #f8f8f8;
+      background-color: #f9f9f9;
     }
 
     header {
@@ -39,76 +39,50 @@
     }
 
     main {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 70vh;
-      flex-direction: column;
-    }
-
-    form {
+      max-width: 900px;
+      margin: 40px auto;
       background-color: white;
-      padding: 40px;
-      border: 1px solid #ccc;
       border-radius: 8px;
+      padding: 30px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      width: 100%;
-      max-width: 400px;
     }
 
     h2 {
-      text-align: center;
       color: #b40000;
-      margin-bottom: 20px;
-    }
-
-    input[type="text"],
-    input[type="password"] {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    .checkbox-group {
-      display: flex;
-      align-items: center;
-      margin-bottom: 15px;
-    }
-
-    .checkbox-group input {
-      margin-right: 10px;
+      text-align: center;
+      margin-bottom: 30px;
     }
 
     button {
-      width: 100%;
-      padding: 12px;
-      background-color: #b40000;
-      color: white;
+      display: block;
+      margin: 0 auto 20px auto;
+      padding: 12px 20px;
       font-weight: bold;
       border: none;
+      background-color: #b40000;
+      color: white;
       border-radius: 5px;
       cursor: pointer;
-      margin-bottom: 10px;
     }
 
     button:hover {
       background-color: #8b0000;
     }
 
-    .forgot {
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 12px;
+      border: 1px solid #ccc;
       text-align: center;
     }
 
-    .forgot a {
-      font-size: 14px;
-      color: #b40000;
-      text-decoration: none;
-    }
-
-    .forgot a:hover {
-      text-decoration: underline;
+    th {
+      background-color: #f0f0f0;
     }
   </style>
 </head>
@@ -124,19 +98,34 @@
     <a href="login.html">Login</a>
   </nav>
   <main>
-    <form action="index.html" method="POST">
-      <h2>Login</h2>
-      <input type="text" id="username" name="username" placeholder="Username" required />
-      <input type="password" id="password" name="password" placeholder="Password" required />
-
-      <div class="checkbox-group">
-        <input type="checkbox" id="remember" name="remember" />
-        <label for="remember">Remember me</label>
-      </div>
-
-      <button type="submit">Log in</button>
-      <div class="forgot"><a href="#">Forgot password?</a></div>
-    </form>
+    <h2>Reports</h2>
+    <button onclick="alert('Report Generated!')">Generate Report</button>
+    <table>
+      <tr>
+        <th>Report ID</th>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Date</th>
+      </tr>
+      <tr>
+        <td>101</td>
+        <td>Weekly Network Summary</td>
+        <td>Complete</td>
+        <td>2025-06-25</td>
+      </tr>
+      <tr>
+        <td>102</td>
+        <td>Security Breach Analysis</td>
+        <td>Pending</td>
+        <td>2025-06-24</td>
+      </tr>
+      <tr>
+        <td>103</td>
+        <td>System Downtime Report</td>
+        <td>Complete</td>
+        <td>2025-06-23</td>
+      </tr>
+    </table>
   </main>
 </body>
 </html>
