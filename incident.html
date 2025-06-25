@@ -1,40 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Report Incident - MUSH</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Report Incident - MUSH</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff;
+    }
+
+    header {
+      padding: 20px;
+      border-bottom: 2px solid black;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+      border-bottom: 2px solid black;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      border: 1px solid black;
+      padding: 10px 20px;
+      color: black;
+      font-weight: bold;
+    }
+
+    main {
+      padding: 40px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    form {
+      border: 1px solid black;
+      padding: 30px;
+    }
+
+    form label {
+      font-weight: bold;
+      display: block;
+      margin: 15px 0 5px;
+    }
+
+    input[type="text"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid black;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: 1px solid black;
+      background: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #eee;
+    }
+  </style>
 </head>
 <body>
-    <header><h1>Incident Reporting</h1></header>
-    <nav>
-        <a href="index.html">Dashboard</a>
-        <a href="incident.html">Incident</a>
-        <a href="reports.html">Reports</a>
-        <a href="users.html">User Management</a>
-        <a href="login.html">Login</a>
-    </nav>
-    <main>
-        <form action="#" method="POST">
-            <label for="title">Title</label><br>
-            <input type="text" id="title" name="title" required><br><br>
+  <header>
+    <h1>Incident Reporting</h1>
+  </header>
+  <nav>
+    <a href="index.html">Dashboard</a>
+    <a href="incident.html">Incidents</a>
+    <a href="reports.html">Reports</a>
+    <a href="users.html">User Management</a>
+    <a href="login.html">Login</a>
+  </nav>
+  <main>
+    <form action="#" method="POST">
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title" required>
 
-            <label for="description">Description</label><br>
-            <textarea id="description" name="description" required></textarea><br><br>
+      <label for="description">Description</label>
+      <textarea id="description" name="description" rows="4" required></textarea>
 
-            <label for="system">System</label><br>
-            <input type="text" id="system" name="system" required><br><br>
+      <label for="system">System</label>
+      <input type="text" id="system" name="system" required>
 
-            <label for="severity">Severity</label><br>
-            <select id="severity" name="severity">
-                <option>Low</option>
-                <option>Medium</option>
-                <option>High</option>
-            </select><br><br>
+      <label for="severity">Severity</label>
+      <select id="severity" name="severity">
+        <option>Low</option>
+        <option>Medium</option>
+        <option>High</option>
+      </select>
 
-            <button type="submit">Submit</button>
-        </form>
-    </main>
+      <button type="submit">Submit</button>
+    </form>
+  </main>
 </body>
 </html>
