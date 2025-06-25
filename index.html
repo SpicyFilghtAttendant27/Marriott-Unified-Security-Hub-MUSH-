@@ -2,40 +2,151 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dashboard - MUSH</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marriott Unified Security Hub - Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      background-color: #b11226; /* Marriott red */
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #660000;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      gap: 15px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      font-weight: bold;
+      border-radius: 4px;
+    }
+
+    nav a:hover {
+      background-color: #b11226;
+    }
+
+    main {
+      display: flex;
+      justify-content: space-between;
+      padding: 40px;
+      gap: 30px;
+    }
+
+    .incidents, .systems {
+      width: 48%;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #b11226;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        flex-direction: column;
+      }
+
+      .incidents, .systems {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
-    <h1>Marriott Unified Security Hub</h1>
+    <h1>Marriott Unified Security Hub (MUSH)</h1>
   </header>
+
   <nav>
     <a href="index.html">Dashboard</a>
-    <a href="incident.html">Incidents</a>
+    <a href="incident.html">Incident Reporting</a>
     <a href="reports.html">Reports</a>
-    <a href="users.html">User Management</a>
     <a href="login.html">Login</a>
   </nav>
+
   <main>
-    <section>
+    <div class="incidents">
       <h2>Open Incidents</h2>
       <table>
-        <tr><th>ID</th><th>Title</th><th>Priority</th><th>Status</th><th>Created</th></tr>
-        <tr><td>1</td><td>Network Outage</td><td>High</td><td>Open</td><td>2025-06-24</td></tr>
-        <tr><td>2</td><td>Phishing Attempt</td><td>Medium</td><td>Investigating</td><td>2025-06-23</td></tr>
-        <tr><td>3</td><td>Unauthorized Access</td><td>High</td><td>Open</td><td>2025-06-22</td></tr>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Created</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Phishing Email</td>
+            <td>High</td>
+            <td>Open</td>
+            <td>2025-06-24</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Firewall Alert</td>
+            <td>Medium</td>
+            <td>In Progress</td>
+            <td>2025-06-23</td>
+          </tr>
+        </tbody>
       </table>
-    </section>
-    <section>
+    </div>
+
+    <div class="systems">
       <h2>System Overview</h2>
       <ul>
-        <li><strong>Active Systems:</strong> 12</li>
-        <li><strong>Online:</strong> 10</li>
-        <li><strong>Under Maintenance:</strong> 1</li>
+        <li><strong>Active Systems:</strong> 25</li>
+        <li><strong>Online:</strong> 22</li>
+        <li><strong>Under Maintenance:</strong> 2</li>
         <li><strong>Offline:</strong> 1</li>
       </ul>
-    </section>
+    </div>
   </main>
 </body>
 </html>
