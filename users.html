@@ -1,26 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>User Management - MUSH</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Management - MUSH</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #555;
+      padding: 10px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      margin: 0 5px;
+      background-color: #444;
+      border-radius: 5px;
+    }
+
+    nav a:hover {
+      background-color: #666;
+    }
+
+    main {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+      background-color: white;
+      margin-top: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 8px 16px;
+      margin-bottom: 20px;
+      border: 1px solid #999;
+      background-color: #eee;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #ddd;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 12px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f0f0f0;
+    }
+
+    .action-btn {
+      padding: 6px 12px;
+      margin: 0 4px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      background-color: #e0e0e0;
+      cursor: pointer;
+    }
+
+    .action-btn:hover {
+      background-color: #ccc;
+    }
+  </style>
 </head>
 <body>
-    <header><h1>User Management</h1></header>
-    <nav>
-        <a href="index.html">Dashboard</a>
-        <a href="incident.html">Incident</a>
-        <a href="reports.html">Reports</a>
-        <a href="users.html">User Management</a>
-        <a href="login.html">Login</a>
-    </nav>
-    <main>
-        <button onclick="alert('Add User Clicked')">+ Add User</button>
-        <table>
-            <tr><th>Name</th><th>Email</th><th>Role</th><th>Actions</th></tr>
-            <tr><td>John Doe</td><td>john@example.com</td><td>Admin</td><td><button>Edit</button> <button>Delete</button></td></tr>
-        </table>
-    </main>
+  <header>
+    <h1>User Management</h1>
+  </header>
+  <nav>
+    <a href="index.html">Dashboard</a>
+    <a href="incident.html">Incident</a>
+    <a href="reports.html">Reports</a>
+    <a href="users.html">User Management</a>
+    <a href="login.html">Login</a>
+  </nav>
+  <main>
+    <h2>User Management</h2>
+    <button onclick="alert('Add User Clicked')">+ Add User</button>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+      <tr>
+        <td>John Doe</td>
+        <td>john@example.com</td>
+        <td>Admin</td>
+        <td>
+          <button class="action-btn">Edit</button>
+          <button class="action-btn">Delete</button>
+        </td>
+      </tr>
+      <tr>
+        <td>Jane Smith</td>
+        <td>jane@example.com</td>
+        <td>User</td>
+        <td>
+          <button class="action-btn">Edit</button>
+          <button class="action-btn">Delete</button>
+        </td>
+      </tr>
+    </table>
+  </main>
 </body>
 </html>
