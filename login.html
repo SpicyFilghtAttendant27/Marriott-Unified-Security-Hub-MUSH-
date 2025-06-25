@@ -8,108 +8,126 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #fff;
+      background: #f9f9f9;
     }
 
     header {
-      padding: 30px 20px 0 20px;
-      text-align: left;
+      background: #2c3e50;
+      color: white;
+      padding: 20px;
+      text-align: center;
     }
 
-    header h1 {
-      margin: 5px 0;
-      font-size: 28px;
+    nav {
+      background: #34495e;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px;
     }
 
-    header h2 {
-      margin: 0;
-      font-size: 18px;
-      font-weight: normal;
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
     }
 
     main {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      padding: 40px;
+      max-width: 400px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
     }
 
-    form {
-      width: 100%;
-      max-width: 350px;
-      display: flex;
-      flex-direction: column;
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
     }
 
-    h3 {
-      font-size: 32px;
-      margin-bottom: 20px;
+    label {
+      font-weight: bold;
+      display: block;
+      margin: 10px 0 5px;
     }
 
     input[type="text"],
     input[type="password"] {
+      width: 100%;
       padding: 12px;
-      font-size: 16px;
-      margin-bottom: 15px;
-      border: 2px solid #000;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
       border-radius: 3px;
+      box-sizing: border-box;
     }
 
-    label {
-      margin-bottom: 5px;
-      font-size: 14px;
-    }
-
-    .checkbox-group {
+    .checkbox {
       display: flex;
       align-items: center;
       margin-bottom: 20px;
     }
 
-    .checkbox-group input {
+    .checkbox input {
       margin-right: 10px;
     }
 
     button {
+      width: 100%;
       padding: 12px;
-      font-size: 18px;
+      background-color: #3498db;
+      color: white;
       font-weight: bold;
-      border: 2px solid #000;
-      background-color: white;
+      border: none;
       cursor: pointer;
-      margin-bottom: 10px;
+      border-radius: 3px;
     }
 
     button:hover {
-      background-color: #eee;
+      background-color: #2980b9;
     }
 
     .forgot {
-      font-size: 14px;
       text-align: center;
+      margin-top: 15px;
+    }
+
+    .forgot a {
+      color: #3498db;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="#" alt="Logo" style="width:40px; height:40px;" />
-    <h1>MARRIOTT UNIFIED SECURITY HUB</h1>
-    <h2>(MUSH)</h2>
+    <h1>Marriott Unified Security Hub (MUSH)</h1>
   </header>
+  <nav>
+    <a href="index.html">Dashboard</a>
+    <a href="incident.html">Incidents</a>
+    <a href="reports.html">Reports</a>
+    <a href="users.html">Users</a>
+    <a href="login.html">Login</a>
+  </nav>
   <main>
-    <h3>Login</h3>
-    <form action="index.html" method="POST">
-      <input type="text" id="username" name="username" placeholder="Username" required />
-      <input type="password" id="password" name="password" placeholder="Password" required />
+    <h2>Login</h2>
+    <form onsubmit="alert('Login successful (simulated)'); return false;">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" placeholder="Enter your username" required>
 
-      <div class="checkbox-group">
-        <input type="checkbox" id="remember" name="remember" />
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+      <div class="checkbox">
+        <input type="checkbox" id="remember" name="remember">
         <label for="remember">Remember me</label>
       </div>
 
-      <button type="submit">Log in</button>
-      <div class="forgot"><a href="#">Forgot password?</a></div>
+      <button type="submit">Log In</button>
+
+      <div class="forgot">
+        <a href="#">Forgot password?</a>
+      </div>
     </form>
   </main>
 </body>
