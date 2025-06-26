@@ -10,14 +10,12 @@
       font-family: Arial, sans-serif;
       background-color: #f9f9f9;
     }
-
     header {
       background-color: #b11226;
       color: white;
       padding: 30px;
       text-align: center;
     }
-
     nav {
       background-color: #660000;
       display: flex;
@@ -25,7 +23,6 @@
       padding: 10px;
       gap: 15px;
     }
-
     nav a {
       color: white;
       text-decoration: none;
@@ -33,11 +30,9 @@
       font-weight: bold;
       border-radius: 5px;
     }
-
     nav a:hover {
       background-color: #b11226;
     }
-
     main {
       max-width: 1000px;
       margin: 40px auto;
@@ -46,13 +41,11 @@
       padding: 30px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-
     h2 {
       color: #b11226;
       text-align: center;
       margin-bottom: 25px;
     }
-
     button {
       display: block;
       margin: 0 auto 25px auto;
@@ -63,44 +56,35 @@
       color: white;
       border-radius: 5px;
       cursor: pointer;
-      transition: background-color 0.2s ease;
     }
-
     button:hover {
       background-color: #8b0000;
     }
-
     table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 10px;
     }
-
     th, td {
       padding: 12px;
       border: 1px solid #ccc;
       text-align: center;
     }
-
     th {
       background-color: #f0f0f0;
     }
-
     @media (max-width: 768px) {
       table, thead, tbody, th, td, tr {
         display: block;
       }
-
       tr {
         margin-bottom: 15px;
       }
-
       td {
         text-align: right;
         padding-left: 50%;
         position: relative;
       }
-
       td::before {
         content: attr(data-label);
         position: absolute;
@@ -127,36 +111,45 @@
   <main>
     <h2>Security & Incident Reports</h2>
     <button onclick="alert('Report Generated!')">Generate Report</button>
-    <table>
+    <table id="incidentTable">
       <thead>
         <tr>
-          <th>Report ID</th>
+          <th>#</th>
           <th>Title</th>
+          <th>System</th>
+          <th>Severity</th>
           <th>Status</th>
           <th>Date</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td data-label="Report ID">101</td>
-          <td data-label="Title">Weekly Network Summary</td>
-          <td data-label="Status">Complete</td>
-          <td data-label="Date">2025-06-25</td>
-        </tr>
-        <tr>
-          <td data-label="Report ID">102</td>
-          <td data-label="Title">Security Breach Analysis</td>
-          <td data-label="Status">Pending</td>
-          <td data-label="Date">2025-06-24</td>
-        </tr>
-        <tr>
-          <td data-label="Report ID">103</td>
-          <td data-label="Title">System Downtime Report</td>
-          <td data-label="Status">Complete</td>
-          <td data-label="Date">2025-06-23</td>
-        </tr>
+        <!-- Dynamic incident rows go here -->
       </tbody>
     </table>
   </main>
+
+  <script>
+    const tbody = document.querySelector("#incidentTable tbody");
+    const incidents = JSON.parse(localStorage.getItem("incidents") || "[]");
+
+    if (incidents.length === 0) {
+      const row = document.createElement("tr");
+      row.innerHTML = `<td colspan="6">No incident reports found.</td>`;
+      tbody.appendChild(row);
+    } else {
+      incidents.reverse().forEach((incident, i) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${incidents.length - i}</td>
+          <td>${incident.title}</td>
+          <td>${incident.system}</td>
+          <td>${incident.severity}</td>
+          <td>${incident.status || "Open"}</td>
+          <td>${incident.timestamp}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+  </script>
 </body>
 </html>
