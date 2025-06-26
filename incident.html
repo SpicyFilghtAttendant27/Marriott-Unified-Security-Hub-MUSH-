@@ -135,26 +135,29 @@
 
   <script>
     document.getElementById("incidentForm").addEventListener("submit", function(e) {
-      e.preventDefault(); // Prevent real submission
+      e.preventDefault();
 
-      // Simple form data collection
       const title = document.getElementById("title").value.trim();
       const desc = document.getElementById("description").value.trim();
       const system = document.getElementById("system").value.trim();
       const severity = document.getElementById("severity").value;
 
       if (title && desc && system && severity) {
-        // Show a success message
-        document.getElementById("successMessage").style.display = "block";
+        const incident = {
+          title,
+          desc,
+          system,
+          severity,
+          status: "Open",
+          timestamp: new Date().toISOString().split("T")[0] // YYYY-MM-DD format
+        };
 
-        // Clear form after submission
-        this.reset();
-
-        // Optional: Store to localStorage (for simulation)
-        const incident = { title, desc, system, severity, timestamp: new Date().toISOString() };
         let existing = JSON.parse(localStorage.getItem("incidents") || "[]");
         existing.push(incident);
         localStorage.setItem("incidents", JSON.stringify(existing));
+
+        document.getElementById("successMessage").style.display = "block";
+        this.reset();
       }
     });
   </script>
