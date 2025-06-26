@@ -87,6 +87,13 @@
   </style>
 </head>
 <body>
+  <script>
+    // Redirect to login if not authenticated
+    if (localStorage.getItem("loggedIn") !== "true") {
+      window.location.href = "login.html";
+    }
+  </script>
+
   <header>
     <h1>Marriott Unified Security Hub</h1>
   </header>
