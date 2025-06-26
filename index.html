@@ -103,6 +103,7 @@
     <a href="index.html">Dashboard</a>
     <a href="incident.html">Incident Reporting</a>
     <a href="reports.html">Reports</a>
+    <a href="users.html">Users</a>
     <a href="login.html">Login</a>
   </nav>
 
@@ -119,7 +120,7 @@
             <th>Created</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="incidentTable">
           <tr>
             <td>1</td>
             <td>Phishing Email</td>
@@ -148,5 +149,25 @@
       </ul>
     </div>
   </main>
+
+  <script>
+    // Load simulated incidents from localStorage if they exist
+    const storedIncidents = JSON.parse(localStorage.getItem("incidents") || "[]");
+    const incidentTable = document.getElementById("incidentTable");
+
+    if (storedIncidents.length > 0) {
+      storedIncidents.forEach((incident, index) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${index + 3}</td>
+          <td>${incident.title}</td>
+          <td>${incident.severity}</td>
+          <td>Open</td>
+          <td>${new Date(incident.timestamp).toLocaleDateString()}</td>
+        `;
+        incidentTable.appendChild(row);
+      });
+    }
+  </script>
 </body>
 </html>
