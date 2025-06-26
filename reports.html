@@ -96,6 +96,14 @@
   </style>
 </head>
 <body>
+
+  <!-- ✅ Login enforcement script -->
+  <script>
+    if (localStorage.getItem("loggedIn") !== "true") {
+      window.location.href = "login.html";
+    }
+  </script>
+
   <header>
     <h1>Marriott Unified Security Hub</h1>
   </header>
@@ -145,7 +153,7 @@
           <td>${incident.system}</td>
           <td>${incident.severity}</td>
           <td>${incident.status || "Open"}</td>
-          <td>${incident.timestamp}</td>
+          <td>${new Date(incident.timestamp).toLocaleDateString()}</td>
         `;
         tbody.appendChild(row);
       });
