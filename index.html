@@ -12,7 +12,7 @@
     }
 
     header {
-      background-color: #b11226; /* Marriott red */
+      background-color: #b11226;
       color: white;
       padding: 20px;
       text-align: center;
@@ -95,6 +95,14 @@
   </style>
 </head>
 <body>
+
+  <!-- ✅ Login check script -->
+  <script>
+    if (localStorage.getItem("loggedIn") !== "true") {
+      window.location.href = "login.html";
+    }
+  </script>
+
   <header>
     <h1>Marriott Unified Security Hub (MUSH)</h1>
   </header>
@@ -151,7 +159,6 @@
   </main>
 
   <script>
-    // Load simulated incidents from localStorage if they exist
     const storedIncidents = JSON.parse(localStorage.getItem("incidents") || "[]");
     const incidentTable = document.getElementById("incidentTable");
 
