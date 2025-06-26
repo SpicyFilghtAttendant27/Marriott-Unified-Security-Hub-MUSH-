@@ -87,8 +87,9 @@
   </style>
 </head>
 <body>
+
+  <!-- ✅ Login enforcement -->
   <script>
-    // Redirect to login if not authenticated
     if (localStorage.getItem("loggedIn") !== "true") {
       window.location.href = "login.html";
     }
@@ -97,6 +98,7 @@
   <header>
     <h1>Marriott Unified Security Hub</h1>
   </header>
+
   <nav>
     <a href="index.html">Dashboard</a>
     <a href="incident.html">Incident</a>
@@ -104,6 +106,7 @@
     <a href="users.html">Users</a>
     <a href="login.html">Login</a>
   </nav>
+
   <main>
     <h2>User Management</h2>
     <button onclick="alert('Add User Clicked')">+ Add User</button>
