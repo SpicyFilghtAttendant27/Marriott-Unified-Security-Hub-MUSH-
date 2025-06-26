@@ -3,28 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>User Management - Marriott Unified Security Hub</title>
+  <title>User Management - MUSH</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background-color: #f9f9f9;
     }
-
     header {
-      background-color: #b11226;
+      background-color: #b40000;
       color: white;
       padding: 30px;
       text-align: center;
     }
-
     nav {
       background-color: #800000;
       display: flex;
       justify-content: center;
       padding: 10px 0;
     }
-
     nav a {
       color: white;
       text-decoration: none;
@@ -33,11 +30,9 @@
       font-weight: bold;
       border-radius: 5px;
     }
-
     nav a:hover {
-      background-color: #b11226;
+      background-color: #a60000;
     }
-
     main {
       max-width: 900px;
       margin: 40px auto;
@@ -46,45 +41,38 @@
       padding: 30px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-
     h2 {
-      color: #b11226;
+      color: #b40000;
       text-align: center;
       margin-bottom: 30px;
     }
-
     button {
       display: block;
       margin: 0 auto 20px auto;
       padding: 12px 20px;
       font-weight: bold;
       border: none;
-      background-color: #b11226;
+      background-color: #b40000;
       color: white;
       border-radius: 5px;
       cursor: pointer;
     }
-
     button:hover {
       background-color: #8b0000;
     }
-
     table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 10px;
     }
-
     th, td {
       padding: 12px;
       border: 1px solid #ccc;
       text-align: center;
     }
-
     th {
       background-color: #f0f0f0;
     }
-
     .action-btn {
       padding: 6px 12px;
       margin: 0 4px;
@@ -93,7 +81,6 @@
       background-color: #eee;
       cursor: pointer;
     }
-
     .action-btn:hover {
       background-color: #ddd;
     }
@@ -118,12 +105,14 @@
         <th>Name</th>
         <th>Email</th>
         <th>Role</th>
+        <th>Password</th>
         <th>Actions</th>
       </tr>
       <tr>
         <td>Jermey Dunham</td>
         <td>j.dunham@mush.com</td>
         <td>Admin</td>
+        <td>Secure123!</td>
         <td>
           <button class="action-btn">Edit</button>
           <button class="action-btn">Delete</button>
@@ -133,6 +122,7 @@
         <td>Gia Martini</td>
         <td>g.martini@mush.com</td>
         <td>Admin</td>
+        <td>GiaStrong456!</td>
         <td>
           <button class="action-btn">Edit</button>
           <button class="action-btn">Delete</button>
@@ -142,6 +132,7 @@
         <td>Catherine Seaver</td>
         <td>c.seaver@mush.com</td>
         <td>User</td>
+        <td>Cat789$Pass</td>
         <td>
           <button class="action-btn">Edit</button>
           <button class="action-btn">Delete</button>
