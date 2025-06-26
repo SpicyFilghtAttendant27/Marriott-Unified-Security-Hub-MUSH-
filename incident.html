@@ -94,6 +94,14 @@
   </style>
 </head>
 <body>
+
+  <!-- ✅ Login enforcement -->
+  <script>
+    if (localStorage.getItem("loggedIn") !== "true") {
+      window.location.href = "login.html";
+    }
+  </script>
+
   <header>
     <h1>Marriott Unified Security Hub - Report Incident</h1>
   </header>
@@ -149,7 +157,7 @@
           system,
           severity,
           status: "Open",
-          timestamp: new Date().toISOString().split("T")[0] // YYYY-MM-DD format
+          timestamp: new Date().toISOString().split("T")[0]
         };
 
         let existing = JSON.parse(localStorage.getItem("incidents") || "[]");
