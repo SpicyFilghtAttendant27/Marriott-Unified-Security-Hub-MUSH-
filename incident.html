@@ -84,6 +84,13 @@
     button:hover {
       background-color: #8b0000;
     }
+
+    .success-message {
+      margin-top: 20px;
+      color: green;
+      text-align: center;
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -99,7 +106,7 @@
   </nav>
   <main>
     <h2>Incident Reporting Form</h2>
-    <form action="#" method="POST">
+    <form id="incidentForm">
       <label for="title">Title</label>
       <input type="text" id="title" name="title" placeholder="e.g. Server Outage" required>
 
@@ -120,6 +127,36 @@
 
       <button type="submit">Submit Incident</button>
     </form>
+
+    <div class="success-message" id="successMessage">
+      ✅ Incident submitted successfully!
+    </div>
   </main>
+
+  <script>
+    document.getElementById("incidentForm").addEventListener("submit", function(e) {
+      e.preventDefault(); // Prevent real submission
+
+      // Simple form data collection
+      const title = document.getElementById("title").value.trim();
+      const desc = document.getElementById("description").value.trim();
+      const system = document.getElementById("system").value.trim();
+      const severity = document.getElementById("severity").value;
+
+      if (title && desc && system && severity) {
+        // Show a success message
+        document.getElementById("successMessage").style.display = "block";
+
+        // Clear form after submission
+        this.reset();
+
+        // Optional: Store to localStorage (for simulation)
+        const incident = { title, desc, system, severity, timestamp: new Date().toISOString() };
+        let existing = JSON.parse(localStorage.getItem("incidents") || "[]");
+        existing.push(incident);
+        localStorage.setItem("incidents", JSON.stringify(existing));
+      }
+    });
+  </script>
 </body>
 </html>
