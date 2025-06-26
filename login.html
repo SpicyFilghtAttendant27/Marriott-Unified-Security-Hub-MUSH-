@@ -3,21 +3,138 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login - MUSH</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Login - Marriott Unified Security Hub</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #b11226;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #660000;
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+      gap: 15px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      font-weight: bold;
+      border-radius: 4px;
+    }
+
+    nav a:hover {
+      background-color: #b11226;
+    }
+
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 70vh;
+    }
+
+    form {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      color: #b11226;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 5px;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #b11226;
+      color: white;
+      border: none;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #8b0000;
+    }
+
+    p {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    a {
+      color: #b11226;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
   <header>
-    <h1>Login to MUSH</h1>
+    <h1>Login to Marriott Unified Security Hub (MUSH)</h1>
   </header>
+
+  <nav>
+    <a href="index.html">Dashboard</a>
+    <a href="incident.html">Incident</a>
+    <a href="reports.html">Reports</a>
+    <a href="users.html">Users</a>
+    <a href="login.html">Login</a>
+  </nav>
+
   <main>
     <form action="index.html" method="POST">
+      <h2>User Login</h2>
       <label for="username">Username</label>
       <input type="text" id="username" name="username" required>
+
       <label for="password">Password</label>
       <input type="password" id="password" name="password" required>
+
       <label><input type="checkbox" name="remember"> Remember Me</label>
+
       <button type="submit">Log In</button>
+
       <p><a href="#">Forgot Password?</a></p>
     </form>
   </main>
