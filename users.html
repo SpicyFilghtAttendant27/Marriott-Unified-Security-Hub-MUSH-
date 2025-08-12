@@ -5,48 +5,86 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>User Management - MUSH</title>
   <style>
+    :root{
+      --brand:#b40000;
+      --brand-dark:#800000;
+      --brand-hover:#a60000;
+      --bg:#f9f9f9;
+      --card:#ffffff;
+      --border:#ccc;
+      --text:#111;
+    }
+    *{box-sizing:border-box}
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
+      background-color: var(--bg);
+      color: var(--text);
     }
+
+    /* Header with logo */
     header {
-      background-color: #b40000;
+      background-color: var(--brand);
       color: white;
-      padding: 30px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
       text-align: center;
     }
+    header a.logo-link {
+      display: inline-flex;
+      align-items: center;
+    }
+    header img.logo {
+      height: 52px;
+      width: auto;
+      display: block;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.4rem;
+      line-height: 1.1;
+    }
+
+    /* Navigation */
     nav {
-      background-color: #800000;
+      background-color: var(--brand-dark);
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      padding: 10px 0;
+      gap: 8px;
+      padding: 10px;
     }
     nav a, nav button.logout-btn {
       color: white;
       text-decoration: none;
-      padding: 10px 20px;
-      margin: 5px;
+      padding: 10px 15px;
       font-weight: bold;
-      border-radius: 5px;
+      border-radius: 6px;
       background-color: transparent;
       border: none;
       cursor: pointer;
     }
     nav a:hover, nav button.logout-btn:hover {
-      background-color: #a60000;
+      background-color: var(--brand-hover);
     }
+    nav a[aria-current="page"] {
+      background: var(--brand);
+    }
+
+    /* Main content */
     main {
       max-width: 900px;
       margin: 40px auto;
-      background-color: white;
+      background-color: var(--card);
       border-radius: 8px;
       padding: 30px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
     h2 {
-      color: #b40000;
+      color: var(--brand);
       text-align: center;
       margin-bottom: 30px;
     }
@@ -56,7 +94,7 @@
       padding: 12px 20px;
       font-weight: bold;
       border: none;
-      background-color: #b40000;
+      background-color: var(--brand);
       color: white;
       border-radius: 5px;
       cursor: pointer;
@@ -71,7 +109,7 @@
     }
     th, td {
       padding: 12px;
-      border: 1px solid #ccc;
+      border: 1px solid var(--border);
       text-align: center;
     }
     th {
@@ -87,6 +125,12 @@
     }
     .action-btn:hover {
       background-color: #ddd;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 540px){
+      header { flex-direction: column; padding-block: 18px; }
+      header h1 { font-size: 1.2rem; }
     }
   </style>
 </head>
@@ -105,6 +149,9 @@
   </script>
 
   <header>
+    <a href="index.html" class="logo-link" aria-label="Go to dashboard">
+      <img src="images/marriott_logo.png" alt="Marriott logo" class="logo">
+    </a>
     <h1>Marriott Unified Security Hub</h1>
   </header>
 
@@ -112,7 +159,7 @@
     <a href="index.html">Dashboard</a>
     <a href="incident.html">Incident</a>
     <a href="reports.html">Reports</a>
-    <a href="users.html">Users</a>
+    <a href="users.html" aria-current="page">Users</a>
     <a href="login.html">Login</a>
     <button class="logout-btn" onclick="logout()">Logout</button>
   </nav>
