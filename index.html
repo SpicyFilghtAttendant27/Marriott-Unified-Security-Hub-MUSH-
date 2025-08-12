@@ -5,92 +5,97 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Marriott Unified Security Hub - Dashboard</title>
   <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f9f9f9;
+    :root{
+      --brand:#b40000;
+      --brand-dark:#660000;
+      --brand-hover:#a60000;
+      --card:#ffffff;
+      --bg:#f9f9f9;
+      --border:#ddd;
+      --text:#111;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color:var(--bg);
+      color:var(--text);
     }
 
-    header {
-      background-color: #b11226;
-      color: white;
-      padding: 20px;
-      text-align: center;
+    /* Header with logo */
+    header{
+      background-color:var(--brand);
+      color:#fff;
+      padding:16px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      text-align:center;
+    }
+    header a.logo-link{display:inline-flex; align-items:center}
+    header img.logo{
+      height:52px; /* adjust as needed */
+      width:auto;
+      display:block;
+    }
+    header h1{
+      margin:0;
+      font-size:1.4rem;
+      line-height:1.1;
     }
 
-    nav {
-      background-color: #660000;
-      display: flex;
-      justify-content: center;
-      padding: 10px 0;
-      gap: 15px;
+    /* Nav */
+    nav{
+      background-color:var(--brand-dark);
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      padding:10px;
+      flex-wrap:wrap;
     }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 10px 15px;
-      font-weight: bold;
-      border-radius: 4px;
+    nav a{
+      color:#fff;
+      text-decoration:none;
+      padding:10px 15px;
+      font-weight:700;
+      border-radius:6px;
     }
+    nav a:hover, nav a:focus-visible{ background:var(--brand-hover); outline:none; }
+    nav a[aria-current="page"]{ background:var(--brand); }
 
-    nav a:hover {
-      background-color: #b11226;
+    /* Main layout */
+    main{
+      display:flex;
+      justify-content:space-between;
+      padding:40px 24px;
+      gap:30px;
+      max-width:1200px;
+      margin:0 auto;
     }
-
-    main {
-      display: flex;
-      justify-content: space-between;
-      padding: 40px;
-      gap: 30px;
+    .incidents,.systems{
+      width:48%;
+      background-color:var(--card);
+      padding:20px;
+      border-radius:12px;
+      box-shadow:0 0 10px rgba(0,0,0,0.08);
+      border:1px solid var(--border);
     }
+    h2{ margin-top:0; color:var(--brand); }
 
-    .incidents, .systems {
-      width: 48%;
-      background-color: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
+    table{ width:100%; border-collapse:collapse; }
+    th,td{ border:1px solid #ccc; padding:10px; text-align:center; }
+    th{ background:#f2f2f2; }
 
-    h2 {
-      margin-top: 0;
-      color: #b11226;
-    }
+    ul{ list-style:none; padding:0; margin:0; }
+    ul li{ padding:8px 0; border-bottom:1px solid #eee; }
+    ul li:last-child{ border-bottom:none; }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    th, td {
-      border: 1px solid #ccc;
-      padding: 10px;
-      text-align: center;
-    }
-
-    th {
-      background-color: #f2f2f2;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    ul li {
-      padding: 8px 0;
-      border-bottom: 1px solid #eee;
-    }
-
-    @media (max-width: 768px) {
-      main {
-        flex-direction: column;
-      }
-
-      .incidents, .systems {
-        width: 100%;
-      }
+    @media (max-width: 768px){
+      header{ flex-direction:column; padding-block:18px; }
+      header h1{ font-size:1.2rem; }
+      main{ flex-direction:column; padding:20px 12px; }
+      .incidents,.systems{ width:100%; }
     }
   </style>
 </head>
@@ -104,11 +109,14 @@
   </script>
 
   <header>
+    <a href="index.html" class="logo-link" aria-label="Go to dashboard">
+      <img src="images/marriott_logo.png" alt="Marriott logo" class="logo">
+    </a>
     <h1>Marriott Unified Security Hub (MUSH)</h1>
   </header>
 
-  <nav>
-    <a href="index.html">Dashboard</a>
+  <nav aria-label="Primary">
+    <a href="index.html" aria-current="page">Dashboard</a>
     <a href="incident.html">Incident Reporting</a>
     <a href="reports.html">Reports</a>
     <a href="users.html">Users</a>
@@ -159,6 +167,7 @@
   </main>
 
   <script>
+    // Populate with locally stored incidents created from the Incident page
     const storedIncidents = JSON.parse(localStorage.getItem("incidents") || "[]");
     const incidentTable = document.getElementById("incidentTable");
 
