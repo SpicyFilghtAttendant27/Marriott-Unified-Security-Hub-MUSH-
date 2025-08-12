@@ -22,28 +22,44 @@
       color:var(--text);
     }
 
-    /* Header with logo */
+    /* Header with left auth control + centered brand */
     header{
       background-color:var(--brand);
       color:#fff;
-      padding:16px 20px;
+      padding:12px 16px;
       display:flex;
       align-items:center;
-      justify-content:center;
+      justify-content:space-between; /* puts auth on left, brand in center via flex trick below */
+      position:relative;
+    }
+    .header-inner{
+      /* centers brand by using absolute left auth + flex centering */
+      margin:0 auto;
+      display:flex;
+      align-items:center;
       gap:14px;
-      text-align:center;
     }
-    header a.logo-link{display:inline-flex; align-items:center}
-    header img.logo{
-      height:52px; /* adjust as needed */
-      width:auto;
-      display:block;
+    .brand-link{display:inline-flex; align-items:center; gap:10px; color:#fff; text-decoration:none;}
+    .logo{height:52px; width:auto; display:block;}
+    h1{margin:0; font-size:1.4rem; line-height:1.1;}
+
+    /* Auth control (top-left) */
+    .auth{
+      position:absolute;
+      left:16px;
+      top:12px;
+      display:flex;
+      align-items:center;
+      gap:8px;
     }
-    header h1{
-      margin:0;
-      font-size:1.4rem;
-      line-height:1.1;
+    .auth a{
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+      padding:6px 10px;
+      border-radius:6px;
     }
+    .auth a:hover{ background:var(--brand-hover); }
 
     /* Nav */
     nav{
@@ -92,10 +108,12 @@
     ul li:last-child{ border-bottom:none; }
 
     @media (max-width: 768px){
-      header{ flex-direction:column; padding-block:18px; }
-      header h1{ font-size:1.2rem; }
+      header{ padding:18px 12px; }
+      .header-inner{ flex-direction:column; }
+      h1{ font-size:1.2rem; text-align:center; }
       main{ flex-direction:column; padding:20px 12px; }
       .incidents,.systems{ width:100%; }
+      .auth{ position:static; margin-bottom:8px; }
     }
   </style>
 </head>
@@ -109,10 +127,18 @@
   </script>
 
   <header>
-    <a href="index.html" class="logo-link" aria-label="Go to dashboard">
-      <img src="images/marriott_logo.png" alt="Marriott logo" class="logo">
-    </a>
-    <h1>Marriott Unified Security Hub (MUSH)</h1>
+    <!-- Top-left auth control -->
+    <div class="auth">
+      <a id="authLink" href="login.html">Login</a>
+    </div>
+
+    <!-- Centered brand (logo + title) -->
+    <div class="header-inner">
+      <a href="index.html" class="brand-link" aria-label="Go to dashboard">
+        <img src="images/marriott_logo.png" alt="Marriott logo" class="logo">
+        <h1>Marriott Unified Security Hub (MUSH)</h1>
+      </a>
+    </div>
   </header>
 
   <nav aria-label="Primary">
@@ -120,7 +146,6 @@
     <a href="incident.html">Incident Reporting</a>
     <a href="reports.html">Reports</a>
     <a href="users.html">Users</a>
-    <a href="login.html">Login</a>
   </nav>
 
   <main>
@@ -167,6 +192,23 @@
   </main>
 
   <script>
+    // 🔐 Swap Login -> Logout on protected pages
+    (function(){
+      const authLink = document.getElementById("authLink");
+      if (localStorage.getItem("loggedIn") === "true") {
+        authLink.textContent = "Logout";
+        authLink.href = "#";
+        authLink.addEventListener("click", function (e) {
+          e.preventDefault();
+          localStorage.removeItem("loggedIn");
+          window.location.href = "login.html";
+        });
+      } else {
+        // If somehow here without login, bounce to login
+        window.location.href = "login.html";
+      }
+    })();
+
     // Populate with locally stored incidents created from the Incident page
     const storedIncidents = JSON.parse(localStorage.getItem("incidents") || "[]");
     const incidentTable = document.getElementById("incidentTable");
