@@ -33,39 +33,48 @@
       gap: 14px;
       text-align: center;
     }
-    header a.logo-link {
-      display: inline-flex;
-      align-items: center;
-    }
+    header a.logo-link { display: inline-flex; align-items: center; }
     header img.logo {
       height: 52px;
       width: auto;
       display: block;
     }
-    header h1 {
-      margin: 0;
-      font-size: 1.4rem;
-      line-height: 1.1;
-    }
+    header h1 { margin: 0; font-size: 1.4rem; line-height: 1.1; }
 
-    /* Nav */
+    /* Nav with left auth link + centered main links */
     nav {
       background-color: var(--brand-dark);
       display: flex;
-      justify-content: center;
-      gap: 12px;
-      padding: 10px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+      gap: 10px;
       flex-wrap: wrap;
     }
-    nav a {
+    .nav-left a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
+    .nav-left a:hover { background: var(--brand-hover); }
+
+    .nav-main {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex: 1 1 auto;
+    }
+    .nav-main a {
       color: white;
       text-decoration: none;
       padding: 10px 15px;
       font-weight: bold;
       border-radius: 6px;
     }
-    nav a:hover, nav a:focus-visible { background: var(--brand-hover); outline: none; }
-    nav a[aria-current="page"] { background: var(--brand); }
+    .nav-main a:hover, .nav-main a:focus-visible { background: var(--brand-hover); outline: none; }
+    .nav-main a[aria-current="page"] { background: var(--brand); }
 
     /* Main content */
     main {
@@ -92,9 +101,8 @@
       border-radius: 5px;
       cursor: pointer;
     }
-    button:hover {
-      background-color: #8b0000;
-    }
+    button:hover { background-color: #8b0000; }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -105,14 +113,14 @@
       border: 1px solid #ccc;
       text-align: center;
     }
-    th {
-      background-color: #f0f0f0;
-    }
+    th { background-color: #f0f0f0; }
 
     /* Mobile adjustments */
     @media (max-width: 768px) {
       header { flex-direction: column; padding-block: 18px; }
       header h1 { font-size: 1.2rem; }
+      .nav-main { width: 100%; order: 2; justify-content: center; }
+      .nav-left { order: 1; }
       table, thead, tbody, th, td, tr { display: block; }
       tr { margin-bottom: 15px; }
       td {
@@ -132,7 +140,7 @@
 </head>
 <body>
 
-  <!-- ✅ Login enforcement script -->
+  <!-- ✅ Login enforcement -->
   <script>
     if (localStorage.getItem("loggedIn") !== "true") {
       window.location.href = "login.html";
@@ -147,11 +155,18 @@
   </header>
 
   <nav>
-    <a href="index.html">Dashboard</a>
-    <a href="incident.html">Incident</a>
-    <a href="reports.html" aria-current="page">Reports</a>
-    <a href="users.html">Users</a>
-    <a href="login.html">Login</a>
+    <!-- Top-left auth link -->
+    <div class="nav-left">
+      <a id="authLink" href="login.html">Login</a>
+    </div>
+
+    <!-- Centered main nav -->
+    <div class="nav-main" aria-label="Primary">
+      <a href="index.html">Dashboard</a>
+      <a href="incident.html">Incident</a>
+      <a href="reports.html" aria-current="page">Reports</a>
+      <a href="users.html">Users</a>
+    </div>
   </nav>
 
   <main>
@@ -175,6 +190,18 @@
   </main>
 
   <script>
+    // Swap Login ↔ Logout in the top-left
+    const authLink = document.getElementById("authLink");
+    if (localStorage.getItem("loggedIn") === "true") {
+      authLink.textContent = "Logout";
+      authLink.href = "#";
+      authLink.addEventListener("click", function () {
+        localStorage.removeItem("loggedIn");
+        window.location.href = "login.html";
+      });
+    }
+
+    // Populate table from localStorage
     const tbody = document.querySelector("#incidentTable tbody");
     const incidents = JSON.parse(localStorage.getItem("incidents") || "[]");
 
@@ -183,15 +210,15 @@
       row.innerHTML = `<td colspan="6">No incident reports found.</td>`;
       tbody.appendChild(row);
     } else {
-      incidents.reverse().forEach((incident, i) => {
+      incidents.slice().reverse().forEach((incident, i) => {
         const row = document.createElement("tr");
         row.innerHTML = `
           <td>${incidents.length - i}</td>
-          <td>${incident.title}</td>
-          <td>${incident.system}</td>
-          <td>${incident.severity}</td>
-          <td>${incident.status || "Open"}</td>
-          <td>${new Date(incident.timestamp).toLocaleDateString()}</td>
+          <td data-label="Title">${incident.title}</td>
+          <td data-label="System">${incident.system}</td>
+          <td data-label="Severity">${incident.severity}</td>
+          <td data-label="Status">${incident.status || "Open"}</td>
+          <td data-label="Date">${new Date(incident.timestamp).toLocaleDateString()}</td>
         `;
         tbody.appendChild(row);
       });
