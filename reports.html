@@ -5,44 +5,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Reports - Marriott Unified Security Hub</title>
   <style>
+    :root{
+      --brand:#b40000;
+      --brand-dark:#660000;
+      --brand-hover:#a60000;
+      --bg:#f9f9f9;
+      --card:#ffffff;
+      --border:#ccc;
+      --text:#111;
+    }
+    *{box-sizing:border-box}
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
+      background-color: var(--bg);
+      color: var(--text);
     }
+
+    /* Header with logo */
     header {
-      background-color: #b11226;
+      background-color: var(--brand);
       color: white;
-      padding: 30px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
       text-align: center;
     }
+    header a.logo-link {
+      display: inline-flex;
+      align-items: center;
+    }
+    header img.logo {
+      height: 52px;
+      width: auto;
+      display: block;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.4rem;
+      line-height: 1.1;
+    }
+
+    /* Nav */
     nav {
-      background-color: #660000;
+      background-color: var(--brand-dark);
       display: flex;
       justify-content: center;
+      gap: 12px;
       padding: 10px;
-      gap: 15px;
+      flex-wrap: wrap;
     }
     nav a {
       color: white;
       text-decoration: none;
-      padding: 10px 20px;
+      padding: 10px 15px;
       font-weight: bold;
-      border-radius: 5px;
+      border-radius: 6px;
     }
-    nav a:hover {
-      background-color: #b11226;
-    }
+    nav a:hover, nav a:focus-visible { background: var(--brand-hover); outline: none; }
+    nav a[aria-current="page"] { background: var(--brand); }
+
+    /* Main content */
     main {
       max-width: 1000px;
       margin: 40px auto;
-      background-color: white;
+      background-color: var(--card);
       border-radius: 10px;
       padding: 30px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
     h2 {
-      color: #b11226;
+      color: var(--brand);
       text-align: center;
       margin-bottom: 25px;
     }
@@ -52,7 +87,7 @@
       padding: 12px 20px;
       font-weight: bold;
       border: none;
-      background-color: #b11226;
+      background-color: var(--brand);
       color: white;
       border-radius: 5px;
       cursor: pointer;
@@ -73,13 +108,13 @@
     th {
       background-color: #f0f0f0;
     }
+
+    /* Mobile adjustments */
     @media (max-width: 768px) {
-      table, thead, tbody, th, td, tr {
-        display: block;
-      }
-      tr {
-        margin-bottom: 15px;
-      }
+      header { flex-direction: column; padding-block: 18px; }
+      header h1 { font-size: 1.2rem; }
+      table, thead, tbody, th, td, tr { display: block; }
+      tr { margin-bottom: 15px; }
       td {
         text-align: right;
         padding-left: 50%;
@@ -105,13 +140,16 @@
   </script>
 
   <header>
+    <a href="index.html" class="logo-link" aria-label="Go to dashboard">
+      <img src="images/marriott_logo.png" alt="Marriott logo" class="logo">
+    </a>
     <h1>Marriott Unified Security Hub</h1>
   </header>
 
   <nav>
     <a href="index.html">Dashboard</a>
     <a href="incident.html">Incident</a>
-    <a href="reports.html">Reports</a>
+    <a href="reports.html" aria-current="page">Reports</a>
     <a href="users.html">Users</a>
     <a href="login.html">Login</a>
   </nav>
