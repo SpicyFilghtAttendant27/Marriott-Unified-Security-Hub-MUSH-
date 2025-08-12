@@ -12,6 +12,7 @@
       --text:#111;
       --border:#ccc;
       --success:#1a7f37;
+      --topbar:#5a0000;
     }
 
     * { box-sizing: border-box; }
@@ -21,6 +22,26 @@
       color: var(--text);
       background-color: #fff;
     }
+
+    /* Top-left auth bar */
+    .topbar {
+      background: var(--topbar);
+      color: #fff;
+      padding: 6px 10px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+    .topbar a {
+      color: #fff;
+      text-decoration: none;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+    .topbar a:hover { background: var(--brand-hover); }
 
     /* Header with logo */
     header {
@@ -141,6 +162,11 @@
     }
   </script>
 
+  <!-- Top-left auth bar -->
+  <div class="topbar">
+    <a id="authLink" href="login.html">Login</a>
+  </div>
+
   <header>
     <a href="index.html" class="logo-link" aria-label="Go to dashboard">
       <img src="images/marriott_logo.png" alt="Marriott logo" class="logo">
@@ -153,7 +179,7 @@
     <a href="incident.html" aria-current="page">Incident</a>
     <a href="reports.html">Reports</a>
     <a href="users.html">Users</a>
-    <a href="login.html">Login</a>
+    <a id="navLoginLink" href="login.html">Login</a>
   </nav>
 
   <main>
@@ -187,7 +213,30 @@
   </main>
 
   <script>
-    // Simple client-side handling with localStorage
+    // Swap Login ↔ Logout in topbar and hide nav "Login" if logged in
+    (function(){
+      const isLoggedIn = localStorage.getItem("loggedIn") === "true";
+      const authLink = document.getElementById("authLink");
+      const navLoginLink = document.getElementById("navLoginLink");
+
+      if (isLoggedIn) {
+        // Top-left shows Logout
+        authLink.textContent = "Logout";
+        authLink.href = "#";
+        authLink.addEventListener("click", function(){
+          localStorage.removeItem("loggedIn");
+          window.location.href = "login.html";
+        });
+
+        // Hide the Login item in the main nav
+        if (navLoginLink) navLoginLink.style.display = "none";
+      } else {
+        // Not logged in → topbar shows Login (default); keep nav Login visible
+        if (navLoginLink) navLoginLink.style.display = "";
+      }
+    })();
+
+    // Simple client-side handling with localStorage for incident creation
     document.getElementById("incidentForm").addEventListener("submit", function(e) {
       e.preventDefault();
 
@@ -203,7 +252,7 @@
           system,
           severity,
           status: "Open",
-          timestamp: new Date().toISOString().split("T")[0]
+          timestamp: new Date().toISOString()
         };
 
         const existing = JSON.parse(localStorage.getItem("incidents") || "[]");
