@@ -5,91 +5,130 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Incident Reporting - MUSH</title>
   <style>
+    :root{
+      --brand:#b40000;
+      --brand-dark:#800000;
+      --brand-hover:#a60000;
+      --text:#111;
+      --border:#ccc;
+      --success:#1a7f37;
+    }
+
+    * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
       background-color: #fff;
     }
 
+    /* Header with logo */
     header {
-      background-color: #b40000;
-      color: white;
-      padding: 20px;
-      text-align: center;
+      background-color: var(--brand);
+      color: #fff;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      text-align: center; /* fallback */
+    }
+    header a.logo-link { display: inline-flex; align-items: center; }
+    header img.logo {
+      height: 52px; /* adjust as needed */
+      width: auto;
+      display: block;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.4rem;
+      line-height: 1.1;
     }
 
+    /* Nav */
     nav {
-      background-color: #800000;
+      background-color: var(--brand-dark);
       display: flex;
       justify-content: center;
-      padding: 10px 0;
+      gap: 10px;
+      padding: 10px;
+      flex-wrap: wrap;
     }
-
     nav a {
-      color: white;
+      color: #fff;
       text-decoration: none;
-      padding: 10px 20px;
-      margin: 0 10px;
+      padding: 10px 16px;
       font-weight: bold;
-      border-radius: 5px;
+      border-radius: 6px;
+    }
+    nav a:hover,
+    nav a:focus-visible {
+      background-color: var(--brand-hover);
+      outline: none;
     }
 
-    nav a:hover {
-      background-color: #a60000;
-    }
-
+    /* Main card */
     main {
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 30px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 720px;
+      margin: 36px auto;
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.08);
     }
-
     h2 {
       text-align: center;
-      color: #b40000;
+      color: var(--brand);
+      margin-top: 0;
     }
 
     label {
       display: block;
-      margin-top: 15px;
+      margin-top: 16px;
       font-weight: bold;
     }
-
     input[type="text"],
     textarea,
     select {
       width: 100%;
       padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-sizing: border-box;
+      margin-top: 6px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font: inherit;
     }
+    textarea { resize: vertical; }
 
     button {
       margin-top: 20px;
       width: 100%;
       padding: 12px;
-      background-color: #b40000;
-      color: white;
+      background-color: var(--brand);
+      color: #fff;
       border: none;
       font-weight: bold;
-      border-radius: 5px;
+      border-radius: 6px;
       cursor: pointer;
     }
-
-    button:hover {
-      background-color: #8b0000;
-    }
+    button:hover { background-color: #8b0000; }
 
     .success-message {
-      margin-top: 20px;
-      color: green;
+      margin-top: 18px;
+      color: var(--success);
       text-align: center;
       display: none;
+      font-weight: 600;
+    }
+
+    /* Mobile: stack logo above title */
+    @media (max-width: 540px){
+      header {
+        flex-direction: column;
+        padding-block: 18px;
+      }
+      header h1 { font-size: 1.2rem; }
+      nav { gap: 6px; }
+      main { margin: 20px 12px; padding: 18px; }
     }
   </style>
 </head>
@@ -103,26 +142,32 @@
   </script>
 
   <header>
-    <h1>Marriott Unified Security Hub - Report Incident</h1>
+    <a href="index.html" class="logo-link" aria-label="Go to dashboard">
+      <img src="images/marriott_logo.png" alt="Marriott logo" class="logo">
+    </a>
+    <h1>Marriott Unified Security Hub — Report Incident</h1>
   </header>
-  <nav>
+
+  <nav aria-label="Primary">
     <a href="index.html">Dashboard</a>
-    <a href="incident.html">Incident</a>
+    <a href="incident.html" aria-current="page">Incident</a>
     <a href="reports.html">Reports</a>
     <a href="users.html">Users</a>
     <a href="login.html">Login</a>
   </nav>
+
   <main>
     <h2>Incident Reporting Form</h2>
-    <form id="incidentForm">
+
+    <form id="incidentForm" autocomplete="off" novalidate>
       <label for="title">Title</label>
-      <input type="text" id="title" name="title" placeholder="e.g. Server Outage" required>
+      <input type="text" id="title" name="title" placeholder="e.g., Server Outage" required>
 
       <label for="description">Description</label>
       <textarea id="description" name="description" placeholder="Describe the issue in detail..." rows="4" required></textarea>
 
       <label for="system">Affected System</label>
-      <input type="text" id="system" name="system" placeholder="e.g. Email Server" required>
+      <input type="text" id="system" name="system" placeholder="e.g., Email Server" required>
 
       <label for="severity">Severity</label>
       <select id="severity" name="severity" required>
@@ -142,6 +187,7 @@
   </main>
 
   <script>
+    // Simple client-side handling with localStorage
     document.getElementById("incidentForm").addEventListener("submit", function(e) {
       e.preventDefault();
 
@@ -160,12 +206,13 @@
           timestamp: new Date().toISOString().split("T")[0]
         };
 
-        let existing = JSON.parse(localStorage.getItem("incidents") || "[]");
+        const existing = JSON.parse(localStorage.getItem("incidents") || "[]");
         existing.push(incident);
         localStorage.setItem("incidents", JSON.stringify(existing));
 
         document.getElementById("successMessage").style.display = "block";
         this.reset();
+        document.getElementById("title").focus();
       }
     });
   </script>
