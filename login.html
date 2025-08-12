@@ -26,16 +26,18 @@
       padding: 20px;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between; /* space between logo/title and nav */
       gap: 14px;
-      text-align: center;
     }
     header a.logo-link {
       display: inline-flex;
       align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: white;
     }
     header img.logo {
-      height: 52px; /* adjust as needed */
+      height: 52px;
       width: auto;
       display: block;
     }
@@ -43,6 +45,22 @@
       margin: 0;
       font-size: 1.4rem;
       line-height: 1.1;
+    }
+
+    /* Nav style */
+    nav {
+      display: flex;
+      gap: 10px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 6px 12px;
+      border-radius: 4px;
+    }
+    nav a:hover {
+      background-color: var(--brand-hover);
     }
 
     main {
@@ -88,18 +106,24 @@
     @media (max-width: 540px){
       header {
         flex-direction: column;
-        padding-block: 18px;
+        text-align: center;
       }
-      header h1 { font-size: 1.2rem; }
+      nav {
+        justify-content: center;
+      }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <a href="index.html" class="logo-link" aria-label="Go to dashboard">
+    <a href="index.html" class="logo-link">
       <img src="images/marriott_logo.png" alt="Marriott logo" class="logo">
+      <h1>Login to MUSH</h1>
     </a>
-    <h1>Login to MUSH</h1>
+    <nav>
+      <a id="authLink" href="login.html">Login</a>
+    </nav>
   </header>
 
   <main>
@@ -118,12 +142,19 @@
   </main>
 
   <script>
+    // Redirect to dashboard if already logged in
+    if (localStorage.getItem("loggedIn") === "true") {
+      window.location.href = "index.html";
+    }
+
+    // Users list
     const users = [
       { username: "j.dunham@mush.com", password: "Secure123!" },
       { username: "g.martini@mush.com", password: "GiaStrong456!" },
       { username: "c.seaver@mush.com", password: "Cat789$Pass" }
     ];
 
+    // Handle login
     document.getElementById("loginForm").addEventListener("submit", function (e) {
       e.preventDefault();
       const user = document.getElementById("username").value.trim();
@@ -138,6 +169,17 @@
         alert("Invalid credentials.");
       }
     });
+
+    // Dynamic login/logout link
+    const authLink = document.getElementById("authLink");
+    if (localStorage.getItem("loggedIn") === "true") {
+      authLink.textContent = "Logout";
+      authLink.href = "#";
+      authLink.addEventListener("click", function () {
+        localStorage.removeItem("loggedIn");
+        window.location.href = "login.html";
+      });
+    }
   </script>
 </body>
 </html>
