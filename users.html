@@ -29,13 +29,15 @@
       padding: 20px;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       gap: 14px;
-      text-align: center;
     }
     header a.logo-link {
       display: inline-flex;
       align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: white;
     }
     header img.logo {
       height: 52px;
@@ -57,17 +59,14 @@
       gap: 8px;
       padding: 10px;
     }
-    nav a, nav button.logout-btn {
+    nav a {
       color: white;
       text-decoration: none;
       padding: 10px 15px;
       font-weight: bold;
       border-radius: 6px;
-      background-color: transparent;
-      border: none;
-      cursor: pointer;
     }
-    nav a:hover, nav button.logout-btn:hover {
+    nav a:hover {
       background-color: var(--brand-hover);
     }
     nav a[aria-current="page"] {
@@ -129,8 +128,8 @@
 
     /* Mobile adjustments */
     @media (max-width: 540px){
-      header { flex-direction: column; padding-block: 18px; }
-      header h1 { font-size: 1.2rem; }
+      header { flex-direction: column; text-align: center; }
+      nav { justify-content: center; }
     }
   </style>
 </head>
@@ -141,28 +140,21 @@
     if (localStorage.getItem("loggedIn") !== "true") {
       window.location.href = "login.html";
     }
-
-    function logout() {
-      localStorage.removeItem("loggedIn");
-      window.location.href = "login.html";
-    }
   </script>
 
   <header>
-    <a href="index.html" class="logo-link" aria-label="Go to dashboard">
+    <a href="index.html" class="logo-link">
       <img src="images/marriott_logo.png" alt="Marriott logo" class="logo">
+      <h1>Marriott Unified Security Hub</h1>
     </a>
-    <h1>Marriott Unified Security Hub</h1>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="incident.html">Incident</a>
+      <a href="reports.html">Reports</a>
+      <a href="users.html" aria-current="page">Users</a>
+      <a id="authLink" href="login.html">Login</a>
+    </nav>
   </header>
-
-  <nav>
-    <a href="index.html">Dashboard</a>
-    <a href="incident.html">Incident</a>
-    <a href="reports.html">Reports</a>
-    <a href="users.html" aria-current="page">Users</a>
-    <a href="login.html">Login</a>
-    <button class="logout-btn" onclick="logout()">Logout</button>
-  </nav>
 
   <main>
     <h2>User Management</h2>
@@ -203,5 +195,19 @@
       </tr>
     </table>
   </main>
+
+  <script>
+    // Dynamic login/logout link
+    const authLink = document.getElementById("authLink");
+    if (localStorage.getItem("loggedIn") === "true") {
+      authLink.textContent = "Logout";
+      authLink.href = "#";
+      authLink.addEventListener("click", function () {
+        localStorage.removeItem("loggedIn");
+        window.location.href = "login.html";
+      });
+    }
+  </script>
+
 </body>
 </html>
